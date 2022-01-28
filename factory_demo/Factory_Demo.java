@@ -1,0 +1,116 @@
+package factory_demo;
+interface Vehicle
+{
+	void cost();
+	void milage();
+}
+abstract class Car implements Vehicle
+{
+	void vipers()
+	{
+		System.out.println("Car has Vipers...");
+	}
+}
+abstract class Bike implements Vehicle
+{
+	void stand()
+	{
+		System.out.println("Bike has Stand...");
+	}
+}
+
+class Audi extends Car
+{
+	public void cost()
+	{
+		System.out.println("Audi cost is 40 Lakhs");
+	}
+
+	public void milage()
+	{
+		System.out.println("Audi milage is 15 KM");		
+	}
+	
+}
+class BMW extends Car
+{
+	public void cost()
+	{
+		System.out.println("BMW cost is 50 Lakhs");
+	}
+	
+	public void milage()
+	{
+		System.out.println("BMW milage is 10 KM");		
+	}
+	
+}
+class Fz extends Bike
+{
+	public void cost()
+	{
+		System.out.println("FZ cost is 2 Lakhs");
+	}
+	
+	public void milage()
+	{
+		System.out.println("FZ milage is 50 KM");		
+	}
+	
+}
+class Apache extends Bike
+{
+	public void cost()
+	{
+		System.out.println("Apache cost is 1.5 Lakhs");
+	}
+	
+	public void milage()
+	{
+		System.out.println("Apache milage is 40 KM");		
+	}
+	
+}
+class CarFactory
+{
+	Car getCar(String car)
+	{
+		if(car.equals("Audi"))
+			return new Audi();
+		else if(car.equals("BMW"))
+			return new BMW();
+		return null;
+	}
+}
+class BikeFactory
+{
+	Bike getBike(String bike)
+	{
+		if(bike.equals("Fz"))
+			return new Fz();
+		else if(bike.equals("Apache"))
+			return new Apache();
+		return null;
+	}
+}
+public class Factory_Demo {
+
+	public static void main(String[] args)
+	{
+		CarFactory cf=new CarFactory();
+		System.out.println("\tCar Details :");
+		Car c=cf.getCar("Audi");
+		c.vipers();
+		c.cost();
+		c.milage();
+		
+		BikeFactory bf=new BikeFactory();
+		System.out.println("\n\tBike Details :");
+		Bike b=bf.getBike("Fz");
+		b.stand();
+		b.cost();
+		b.milage();
+
+	}
+
+}
